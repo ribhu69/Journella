@@ -6,6 +6,26 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A2C45BD32CB016EC0049C4CD /* Journella.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* Journella.md */; };
+		A2C45BDB2CB0197B0049C4CD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */; };
+		A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BED2CB019C80049C4CD /* Oswald.ttf */; };
+		A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */; };
+		A2C45BF22CB019DE0049C4CD /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */; };
+		A2C45BF62CB01AB50049C4CD /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BF52CB01AB10049C4CD /* FontEnum.swift */; };
+		A2C45BF92CB01C580049C4CD /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BF82CB01B000049C4CD /* FontPickerView.swift */; };
+		A2C45BFC2CB0252C0049C4CD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BFB2CB024E70049C4CD /* ColorExtension.swift */; };
+		A2C45BFE2CB042570049C4CD /* JournalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BFD2CB042540049C4CD /* JournalListView.swift */; };
+		A2C45C032CB043650049C4CD /* TagMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C022CB042EA0049C4CD /* TagMapper.swift */; };
+		A2C45C042CB043690049C4CD /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C002CB042A50049C4CD /* Journal.swift */; };
+		A2C45C052CB0436D0049C4CD /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C012CB042D60049C4CD /* Tags.swift */; };
+		A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C062CB04D360049C4CD /* Media.xcassets */; };
+		A2C45C0F2CB136130049C4CD /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C0E2CB136110049C4CD /* AddNote.swift */; };
+		A2C45C112CB160E70049C4CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C102CB160E60049C4CD /* DateExtension.swift */; };
+		A2C45C132CB193BD0049C4CD /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C122CB193B80049C4CD /* NoteDetailView.swift */; };
+		A2C45C152CB1970D0049C4CD /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A2C45BB62CB0169A0049C4CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +47,41 @@
 		A2C45BA32CB016980049C4CD /* Journella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BB52CB0169A0049C4CD /* JournellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2C45BD22CB016E70049C4CD /* Journella.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Journella.md; sourceTree = "<group>"; };
+		A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DancingScript.ttf; sourceTree = "<group>"; };
+		A2C45BED2CB019C80049C4CD /* Oswald.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oswald.ttf; sourceTree = "<group>"; };
+		A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayfairDisplay.ttf; sourceTree = "<group>"; };
+		A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
+		A2C45BF52CB01AB10049C4CD /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
+		A2C45BF82CB01B000049C4CD /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
+		A2C45BFB2CB024E70049C4CD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		A2C45BFD2CB042540049C4CD /* JournalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListView.swift; sourceTree = "<group>"; };
+		A2C45C002CB042A50049C4CD /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		A2C45C012CB042D60049C4CD /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		A2C45C022CB042EA0049C4CD /* TagMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMapper.swift; sourceTree = "<group>"; };
+		A2C45C062CB04D360049C4CD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		A2C45C0E2CB136110049C4CD /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
+		A2C45C102CB160E60049C4CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		A2C45C122CB193B80049C4CD /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A2C45BF42CB01A6C0049C4CD /* Exceptions for "Journella" folder in "Journella" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A2C45BA22CB016980049C4CD /* Journella */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A2C45BA52CB016980049C4CD /* Journella */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A2C45BF42CB01A6C0049C4CD /* Exceptions for "Journella" folder in "Journella" target */,
+			);
 			path = Journella;
 			sourceTree = "<group>";
 		};
@@ -75,6 +125,13 @@
 		A2C45B9A2CB016980049C4CD = {
 			isa = PBXGroup;
 			children = (
+				A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */,
+				A2C45C062CB04D360049C4CD /* Media.xcassets */,
+				A2C45BFF2CB042A20049C4CD /* Model */,
+				A2C45BFA2CB024E10049C4CD /* Utility */,
+				A2C45BF72CB01AF90049C4CD /* Views */,
+				A2C45BD82CB0193A0049C4CD /* Fonts */,
+				A2C45BD22CB016E70049C4CD /* Journella.md */,
 				A2C45BA52CB016980049C4CD /* Journella */,
 				A2C45BB82CB0169A0049C4CD /* JournellaTests */,
 				A2C45BC22CB0169A0049C4CD /* JournellaUITests */,
@@ -90,6 +147,48 @@
 				A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A2C45BD82CB0193A0049C4CD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45BF52CB01AB10049C4CD /* FontEnum.swift */,
+				A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */,
+				A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */,
+				A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */,
+				A2C45BED2CB019C80049C4CD /* Oswald.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A2C45BF72CB01AF90049C4CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45C122CB193B80049C4CD /* NoteDetailView.swift */,
+				A2C45C0E2CB136110049C4CD /* AddNote.swift */,
+				A2C45BFD2CB042540049C4CD /* JournalListView.swift */,
+				A2C45BF82CB01B000049C4CD /* FontPickerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A2C45BFA2CB024E10049C4CD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45C102CB160E60049C4CD /* DateExtension.swift */,
+				A2C45BFB2CB024E70049C4CD /* ColorExtension.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		A2C45BFF2CB042A20049C4CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45C022CB042EA0049C4CD /* TagMapper.swift */,
+				A2C45C012CB042D60049C4CD /* Tags.swift */,
+				A2C45C002CB042A50049C4CD /* Journal.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +311,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C45BD32CB016EC0049C4CD /* Journella.md in Resources */,
+				A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */,
+				A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */,
+				A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */,
+				A2C45BDB2CB0197B0049C4CD /* DancingScript.ttf in Resources */,
+				A2C45BF22CB019DE0049C4CD /* RobotoMono.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +341,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C45BF62CB01AB50049C4CD /* FontEnum.swift in Sources */,
+				A2C45C042CB043690049C4CD /* Journal.swift in Sources */,
+				A2C45BF92CB01C580049C4CD /* FontPickerView.swift in Sources */,
+				A2C45C032CB043650049C4CD /* TagMapper.swift in Sources */,
+				A2C45BFC2CB0252C0049C4CD /* ColorExtension.swift in Sources */,
+				A2C45C112CB160E70049C4CD /* DateExtension.swift in Sources */,
+				A2C45C0F2CB136130049C4CD /* AddNote.swift in Sources */,
+				A2C45C132CB193BD0049C4CD /* NoteDetailView.swift in Sources */,
+				A2C45C152CB1970D0049C4CD /* DatabaseHelper.swift in Sources */,
+				A2C45C052CB0436D0049C4CD /* Tags.swift in Sources */,
+				A2C45BFE2CB042570049C4CD /* JournalListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +515,7 @@
 				DEVELOPMENT_TEAM = 4G9L8BJP6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Journella/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +545,7 @@
 				DEVELOPMENT_TEAM = 4G9L8BJP6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Journella/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
