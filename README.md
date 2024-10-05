@@ -1,4 +1,6 @@
 # Journella
+<img src="https://github.com/ribhu69/Journella/blob/main/Banner.png" alt="Valora Product Banner"/>
+
 
 Journella is a beautifully designed journaling app with a primary focus on aesthetic journaling, seamlessly blending functionality with a clean, modern interface. The app utilizes **CollectionViews** for intuitive content presentation and interaction, allowing users to organize and view their entries in an elegant layout.
 
