@@ -31,11 +31,10 @@ struct AddNoteView: View {
         if let journal {
             self.journal = journal
             self.title = journal.title
-            self.noteDescription  = journal.desc
+            self.noteDescription = journal.desc
             if let tags = journal.tags, !tags.isEmpty {
                 self.tags = tags.map { $0.getTagTitle() }
             }
-//            self.tags = note.tags.map { $0.getTagTitle() }
         }
     }
     
@@ -147,6 +146,8 @@ struct AddNoteView: View {
                         !jTags.isEmpty {
                         tags = jTags.map { $0.getTagTitle() }
                     }
+                    noteDescription = journal?.desc ?? ""
+
                 }
             }
             .padding(.horizontal)
