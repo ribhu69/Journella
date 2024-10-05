@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2C45BD32CB016EC0049C4CD /* Journella.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* Journella.md */; };
+		A2C45BD32CB016EC0049C4CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* README.md */; };
 		A2C45BDB2CB0197B0049C4CD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */; };
 		A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BED2CB019C80049C4CD /* Oswald.ttf */; };
 		A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */; };
@@ -47,7 +47,7 @@
 		A2C45BA32CB016980049C4CD /* Journella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BB52CB0169A0049C4CD /* JournellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2C45BD22CB016E70049C4CD /* Journella.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Journella.md; sourceTree = "<group>"; };
+		A2C45BD22CB016E70049C4CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DancingScript.ttf; sourceTree = "<group>"; };
 		A2C45BED2CB019C80049C4CD /* Oswald.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oswald.ttf; sourceTree = "<group>"; };
 		A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayfairDisplay.ttf; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				A2C45BFA2CB024E10049C4CD /* Utility */,
 				A2C45BF72CB01AF90049C4CD /* Views */,
 				A2C45BD82CB0193A0049C4CD /* Fonts */,
-				A2C45BD22CB016E70049C4CD /* Journella.md */,
+				A2C45BD22CB016E70049C4CD /* README.md */,
 				A2C45BA52CB016980049C4CD /* Journella */,
 				A2C45BB82CB0169A0049C4CD /* JournellaTests */,
 				A2C45BC22CB0169A0049C4CD /* JournellaUITests */,
@@ -311,7 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2C45BD32CB016EC0049C4CD /* Journella.md in Resources */,
+				A2C45BD32CB016EC0049C4CD /* README.md in Resources */,
 				A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */,
 				A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */,
 				A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */,
