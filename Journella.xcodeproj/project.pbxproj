@@ -23,11 +23,11 @@
 		A2C45C112CB160E70049C4CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C102CB160E60049C4CD /* DateExtension.swift */; };
 		A2C45C132CB193BD0049C4CD /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C122CB193B80049C4CD /* NoteDetailView.swift */; };
 		A2C45C152CB1970D0049C4CD /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */; };
-		A2C45C2C2CB1B20C0049C4CD /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C2B2CB1B20C0049C4CD /* Banner.png */; };
 		A2C45C412CB1BB190049C4CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C402CB1BB100049C4CD /* SettingsView.swift */; };
 		A2C45C432CB1CC120049C4CD /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */; };
 		A2C45C452CB22EDE0049C4CD /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C442CB22ED90049C4CD /* FontExtension.swift */; };
 		A2C45C4B2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C4A2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf */; };
+		A2C45C4D2CB2CFAF0049C4CD /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C4C2CB2CFAF0049C4CD /* Banner.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +67,11 @@
 		A2C45C102CB160E60049C4CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A2C45C122CB193B80049C4CD /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
-		A2C45C2B2CB1B20C0049C4CD /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner.png; sourceTree = "<group>"; };
 		A2C45C402CB1BB100049C4CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		A2C45C442CB22ED90049C4CD /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		A2C45C4A2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		A2C45C4C2CB2CFAF0049C4CD /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */,
-				A2C45C2B2CB1B20C0049C4CD /* Banner.png */,
 				A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */,
+				A2C45C4C2CB2CFAF0049C4CD /* Banner.png */,
 				A2C45C062CB04D360049C4CD /* Media.xcassets */,
 				A2C45BFF2CB042A20049C4CD /* Model */,
 				A2C45BFA2CB024E10049C4CD /* Utility */,
@@ -325,8 +325,8 @@
 			files = (
 				A2C45C4B2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf in Resources */,
 				A2C45BD32CB016EC0049C4CD /* README.md in Resources */,
-				A2C45C2C2CB1B20C0049C4CD /* Banner.png in Resources */,
 				A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */,
+				A2C45C4D2CB2CFAF0049C4CD /* Banner.png in Resources */,
 				A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */,
 				A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */,
 				A2C45BF22CB019DE0049C4CD /* RobotoMono.ttf in Resources */,
