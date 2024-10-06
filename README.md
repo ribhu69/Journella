@@ -1,6 +1,6 @@
 # Journella
 
-Journella is a beautifully designed journaling app with a primary focus on aesthetic journaling, seamlessly blending functionality with a clean, modern interface. The app utilizes **CollectionViews** for intuitive content presentation and interaction, allowing users to organize and view their entries in an elegant layout.
+Journella is a beautifully designed journaling app with a primary focus on aesthetic journaling, seamlessly blending functionality with a clean, modern interface.
 
 ## Features
 
@@ -13,4 +13,6 @@ Journella is a beautifully designed journaling app with a primary focus on aesth
 
 - **SwiftUI**: Provides a responsive and modern UI framework, ensuring that Journella has a fluid, native user experience across iOS and macOS platforms.
 - **Swift Data**: Efficiently manages and persists user data, keeping entries safe and easily accessible.
-- **CollectionViews**: Enhance the visual display of entries with grid layouts that balance aesthetics and usability.
+
+                                                                                  
+- Product representation shown may vary from actual product.

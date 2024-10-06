@@ -8,16 +8,19 @@
 import SwiftUI
 import SwiftData
 struct JournalRow: View {
+    @EnvironmentObject var appDefaults: AppDefaults
     var journal: Journal
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(journal.title)
-                .font(.title3)
+                .font(Font.custom(appDefaults.appFontString, size: 24))
+               
             
             Text(journal.desc.isEmpty ? "No Description" : journal.desc)
                 .lineLimit(2)
                 .foregroundStyle(.secondary)
+                .font(Font.custom(appDefaults.appFontString, size: 18))
             
             Text(getFormattedDate(date: journal.createdDate))
                 .foregroundStyle(.secondary)
@@ -35,6 +38,7 @@ struct JournalRow: View {
                         HStack {
                             ForEach(tags) { tag in
                                 Text(tag.title)
+                                    .font(Font.custom(appDefaults.appFontString, size: 14))
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 4)
                                     .background(
@@ -55,14 +59,16 @@ struct JournalRow: View {
 struct JournalCollectionView: View {
     var journal: Journal
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var appDefaults: AppDefaults
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(journal.title)
-                .font(.title3)
+                .font(.custom(appDefaults.appFontString, size: 21))
                 .padding(.bottom, 4)
             Text(journal.desc.isEmpty ? "No Description" : journal.desc)
                 .lineLimit(2)
-                .font(.caption)
+                .font(.custom(appDefaults.appFontString, size: 18))
                 .foregroundStyle(.secondary)
         }
         .padding()
@@ -92,15 +98,17 @@ struct BreatheAnimationView: View {
 }
 
 struct JournalListView : View {
-    
+    @EnvironmentObject var appDefaults: AppDefaults
     @Environment(\.modelContext) private var context
     @Query var journals : [Journal]
     @State var recentJournals : [Journal] = []
-    
+    @State var showSettingsPage = false
     @State var showWriteJournalView = false
     @State var showEditJournalView = false
     @State private var journalInEdit : Journal?
     @Environment(\.colorScheme) var colorScheme
+    
+  
     var body: some View {
         
         NavigationView {
@@ -158,12 +166,6 @@ struct JournalListView : View {
                                         }) {
                                             Label("Delete", systemImage: "trash")
                                         }
-                                        
-                                        Button(action: {
-                                            print("Share \(journal.title)")
-                                        }) {
-                                            Label("Share", systemImage: "square.and.arrow.up")
-                                        }
                                     }
                                     .frame(maxWidth: .infinity) // Ensure the entire row is tappable
                                     .contentShape(Rectangle()) // Make the whole row area responsive to taps
@@ -175,7 +177,6 @@ struct JournalListView : View {
                     BreatheAnimationView()
                 }
             }
-            
             .sheet(isPresented: $showWriteJournalView) {
                 AddNoteView { journal in
                     context.insert(journal)
@@ -189,12 +190,18 @@ struct JournalListView : View {
                     recentJournals.insert(updatedJournal, at: 0)
                 }
             }
+            .fullScreenCover(isPresented: $showSettingsPage, content: {
+                SettingsView()
+            })
+            
+            
             .onChange(of: journalInEdit) {
                 newValue in
                 if newValue != nil {
                     showEditJournalView = true
                 }
             }
+          
             .navigationTitle("Journella")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -206,13 +213,17 @@ struct JournalListView : View {
                             .tint(colorScheme == .dark ? .white : .black)
                     }
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        showSettingsPage.toggle()
+                    }) {
+                        Image("HomeSetting", bundle: nil)
+                            .renderingMode(.template)
+                            .tint(colorScheme == .dark ? .white : .black)
+                    }
+                }
             }
-            
         }
-    }
-    
-    mutating func setJournalToEdit(journal: Journal) {
-        journalInEdit = journal
     }
     
     func deleteJournal(journal: Journal) {
@@ -224,8 +235,6 @@ struct JournalListView : View {
         }
     }
 }
-    
-
 
 #Preview {
     JournalListView()

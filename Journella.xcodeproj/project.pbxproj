@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A2C45BD32CB016EC0049C4CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* README.md */; };
-		A2C45BDB2CB0197B0049C4CD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */; };
 		A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BED2CB019C80049C4CD /* Oswald.ttf */; };
 		A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */; };
 		A2C45BF22CB019DE0049C4CD /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */; };
@@ -25,6 +24,10 @@
 		A2C45C132CB193BD0049C4CD /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C122CB193B80049C4CD /* NoteDetailView.swift */; };
 		A2C45C152CB1970D0049C4CD /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */; };
 		A2C45C2C2CB1B20C0049C4CD /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C2B2CB1B20C0049C4CD /* Banner.png */; };
+		A2C45C412CB1BB190049C4CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C402CB1BB100049C4CD /* SettingsView.swift */; };
+		A2C45C432CB1CC120049C4CD /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */; };
+		A2C45C452CB22EDE0049C4CD /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C442CB22ED90049C4CD /* FontExtension.swift */; };
+		A2C45C4B2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C4A2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +52,6 @@
 		A2C45BB52CB0169A0049C4CD /* JournellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BD22CB016E70049C4CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DancingScript.ttf; sourceTree = "<group>"; };
 		A2C45BED2CB019C80049C4CD /* Oswald.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oswald.ttf; sourceTree = "<group>"; };
 		A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayfairDisplay.ttf; sourceTree = "<group>"; };
 		A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -66,6 +68,10 @@
 		A2C45C122CB193B80049C4CD /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		A2C45C2B2CB1B20C0049C4CD /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner.png; sourceTree = "<group>"; };
+		A2C45C402CB1BB100049C4CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
+		A2C45C442CB22ED90049C4CD /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		A2C45C4A2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -127,6 +133,7 @@
 		A2C45B9A2CB016980049C4CD = {
 			isa = PBXGroup;
 			children = (
+				A2C45C422CB1CC0E0049C4CD /* AppDefaults.swift */,
 				A2C45C2B2CB1B20C0049C4CD /* Banner.png */,
 				A2C45C142CB1970B0049C4CD /* DatabaseHelper.swift */,
 				A2C45C062CB04D360049C4CD /* Media.xcassets */,
@@ -156,9 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				A2C45BF52CB01AB10049C4CD /* FontEnum.swift */,
+				A2C45C4A2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf */,
 				A2C45BF12CB019DE0049C4CD /* RobotoMono.ttf */,
 				A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */,
-				A2C45BDA2CB0197B0049C4CD /* DancingScript.ttf */,
 				A2C45BED2CB019C80049C4CD /* Oswald.ttf */,
 			);
 			path = Fonts;
@@ -167,6 +174,7 @@
 		A2C45BF72CB01AF90049C4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A2C45C402CB1BB100049C4CD /* SettingsView.swift */,
 				A2C45C122CB193B80049C4CD /* NoteDetailView.swift */,
 				A2C45C0E2CB136110049C4CD /* AddNote.swift */,
 				A2C45BFD2CB042540049C4CD /* JournalListView.swift */,
@@ -178,6 +186,7 @@
 		A2C45BFA2CB024E10049C4CD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				A2C45C442CB22ED90049C4CD /* FontExtension.swift */,
 				A2C45C102CB160E60049C4CD /* DateExtension.swift */,
 				A2C45BFB2CB024E70049C4CD /* ColorExtension.swift */,
 			);
@@ -314,12 +323,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C45C4B2CB234E60049C4CD /* DancingScript-VariableFont_wght.ttf in Resources */,
 				A2C45BD32CB016EC0049C4CD /* README.md in Resources */,
 				A2C45C2C2CB1B20C0049C4CD /* Banner.png in Resources */,
 				A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */,
 				A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */,
 				A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */,
-				A2C45BDB2CB0197B0049C4CD /* DancingScript.ttf in Resources */,
 				A2C45BF22CB019DE0049C4CD /* RobotoMono.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,14 +354,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C45C412CB1BB190049C4CD /* SettingsView.swift in Sources */,
 				A2C45BF62CB01AB50049C4CD /* FontEnum.swift in Sources */,
 				A2C45C042CB043690049C4CD /* Journal.swift in Sources */,
 				A2C45BF92CB01C580049C4CD /* FontPickerView.swift in Sources */,
 				A2C45C032CB043650049C4CD /* TagMapper.swift in Sources */,
+				A2C45C432CB1CC120049C4CD /* AppDefaults.swift in Sources */,
 				A2C45BFC2CB0252C0049C4CD /* ColorExtension.swift in Sources */,
 				A2C45C112CB160E70049C4CD /* DateExtension.swift in Sources */,
 				A2C45C0F2CB136130049C4CD /* AddNote.swift in Sources */,
 				A2C45C132CB193BD0049C4CD /* NoteDetailView.swift in Sources */,
+				A2C45C452CB22EDE0049C4CD /* FontExtension.swift in Sources */,
 				A2C45C152CB1970D0049C4CD /* DatabaseHelper.swift in Sources */,
 				A2C45C052CB0436D0049C4CD /* Tags.swift in Sources */,
 				A2C45BFE2CB042570049C4CD /* JournalListView.swift in Sources */,

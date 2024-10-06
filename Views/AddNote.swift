@@ -8,6 +8,7 @@ import SwiftUI
 
 struct AddNoteView: View {
     
+    @EnvironmentObject var appDefaults : AppDefaults
     @Environment(\.dismiss) var dismiss
     @State var title = ""
     @State private var startDate = Date()
@@ -49,7 +50,7 @@ struct AddNoteView: View {
                         
                         TextField("Title", text: $titlePlaceHolder) {
                             isJournalFocused = true
-                        } .font(Font.title.weight(.bold))
+                        } .font(.custom(appDefaults.appFontString, size: 32))
                             .padding(.horizontal, 8)
                             .foregroundColor(.primary)
                             .disabled(true)
@@ -58,7 +59,7 @@ struct AddNoteView: View {
                     
                     TextField("Title", text: $title) {
                         isJournalFocused = true
-                    }.font(Font.title.weight(.bold))
+                    }.font(.custom(appDefaults.appFontString, size: 32))
                         .padding(.horizontal, 8)
                         .focused($isTitleFocused)
                         .onAppear {
@@ -80,19 +81,24 @@ struct AddNoteView: View {
                                 TextField("Test", text: $tagTitlePlaceHolder)
 //                                    .font(.title3)
                                     .foregroundColor(Color(.gray))
+                                    .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
+                                    .fontWeight(.bold)
                                     .disabled(true)
                             }
                             else {
                                 TextField("Test", text: $nonEmptyTagsPlaceHolder)
-                                    .font(.title3)
+                                    
                                     .foregroundColor(Color(.gray))
+                                    .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
+                                    .fontWeight(.bold)
+
                                     .disabled(true)
                             }
                         }
                         
                         TextField("Test", text: $tagTitle)
                             .opacity(self.tagTitle.isEmpty ? 0.25 : 1)
-                            .font(.title3)
+                            .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
                             .foregroundColor(Color(.gray))
                             .disableAutocorrection(true)
                             .onSubmit({
@@ -134,7 +140,7 @@ struct AddNoteView: View {
                         }
                     
                     TextField("Add description", text: $noteDescription, axis: .vertical)
-                        .font(Font.body.weight(.regular))
+                        .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 8)
                         .focused($isJournalFocused)
@@ -142,11 +148,19 @@ struct AddNoteView: View {
                 }
                 .onAppear {
                     if let journal,
+                       
+                        
                         let jTags = journal.tags,
                         !jTags.isEmpty {
+                        
+                        let tagsString = jTags.count > 1 ? "tags" : "tag"
+                        nonEmptyTagsPlaceHolder = "\(jTags.count) \(tagsString) added. Add more (Optional)"
                         tags = jTags.map { $0.getTagTitle() }
                     }
                     noteDescription = journal?.desc ?? ""
+                    
+                    
+                   
 
                 }
             }
@@ -237,10 +251,11 @@ struct AddNoteView: View {
 struct ItemView: View {
     let text: String
     let onDelete: () -> Void
-    
+    @EnvironmentObject var appDefault: AppDefaults
     var body: some View {
         HStack {
             Text(text)
+                .font(.custom(appDefault.appFontString, size: 14, relativeTo: .body))
                 .padding(.leading, 8)
                 .padding(.vertical, 4)
             

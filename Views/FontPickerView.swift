@@ -10,6 +10,7 @@ import SwiftUI
 struct FontPickerCell : View {
     var fontName : String
     @Binding var writtenText : String
+    var isSelected = false
     @ScaledMetric(relativeTo: .body) var dynamicSize = 24
     var body: some View {
         HStack {
@@ -29,16 +30,20 @@ struct FontPickerCell : View {
             .frame(maxWidth: .infinity)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 0.4) //
+                    .stroke(isSelected ? Color.green : Color.gray, lineWidth: isSelected ? 0.7 : 0.4) //
             }
         }
 }
 
 struct FontPickerView : View {
     @State var textToCheck = "The quick brown fox jumps over the lazy dog "
-    
+    @State var selectedFontString = ""
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var appDefaults : AppDefaults
+
+    init() {
+    }
     var body : some View {
-        NavigationView {
             VStack(alignment: .leading) {
                 TextField("Type something to check...", text: $textToCheck)
                     .padding(.top, 8)
@@ -48,32 +53,36 @@ struct FontPickerView : View {
                 
                 List {
                     ForEach(Fonts.allCases) { font in
-                        FontPickerCell(fontName: font.displayName, writtenText: $textToCheck)
+                        FontPickerCell(
+                            fontName: font.displayName,
+                            writtenText: $textToCheck,
+                            isSelected: font.displayName == selectedFontString
+                        )
                             .listRowSeparator(.hidden)
+                            .onTapGesture {
+                                selectedFontString = font.displayName
+                            }
+                        
                     }
                    
                 } .listStyle(.plain)
+            }
+            .onAppear {
+                selectedFontString = AppDefaults.shared.appFontString
             }
             
             .navigationTitle("Choose Font")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
-                        //cancelAction
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Choose") {
-                        //cancelAction
+                        if !selectedFontString.isEmpty {
+                            AppDefaults.shared.setAppFont(value: selectedFontString)
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
+                    .disabled(selectedFontString == appDefaults.appFontString)
                 }
             }
-        }
-       
     }
-}
-
-#Preview {
-    FontPickerView(textToCheck: "The quick brown fox jumps over the lazy dog")
 }

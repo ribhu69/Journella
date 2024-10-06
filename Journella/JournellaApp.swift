@@ -31,5 +31,7 @@ struct JournellaApp: App {
 //            ContentView()
         }
         .modelContainer(DatabaseManager.shared.getContainer())
+        .environmentObject(AppDefaults.shared)
+        
     }
 }
