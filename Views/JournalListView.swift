@@ -136,24 +136,39 @@ struct JournalListView : View {
             VStack {
                 
                 if !searchText.isEmpty {
-                    List {
-                        ForEach(filteredJournals) { journal in
-                            
-                            NavigationLink {
-                                NotesDetailView(note: journal) { editedJournal in
-                                    deleteJournal(journal: journal)
-                                    context.insert(editedJournal)
-                                    recentJournals.insert(editedJournal, at: 0)
+                    if !filteredJournals.isEmpty {
+                        List {
+                            ForEach(filteredJournals) { journal in
+                                
+                                NavigationLink {
+                                    NotesDetailView(note: journal) { editedJournal in
+                                        deleteJournal(journal: journal)
+                                        context.insert(editedJournal)
+                                        recentJournals.insert(editedJournal, at: 0)
+                                    }
+                                } label: {
+                                    JournalRow(journal: journal)
+                                        .padding(.bottom, 8)
+                                        .padding(.horizontal, 8)
+                                       
+                                        .frame(maxWidth: .infinity) // Ensure the entire row is tappable
+                                        .contentShape(Rectangle()) // Make the whole row area responsive to taps
                                 }
-                            } label: {
-                                JournalRow(journal: journal)
-                                    .padding(.bottom, 8)
-                                    .padding(.horizontal, 8)
-                                   
-                                    .frame(maxWidth: .infinity) // Ensure the entire row is tappable
-                                    .contentShape(Rectangle()) // Make the whole row area responsive to taps
                             }
                         }
+                    }
+                    else {
+                        Spacer()
+                        Image("empty")
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 28, height: 28)
+                            .foregroundStyle(.secondary)
+                        Text("Uh-oh! Looks like the journal's on a ☕️ break.\nTry again later!")
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 4)
+                             
+                        Spacer()
                     }
                 }
                 else {
@@ -227,6 +242,12 @@ struct JournalListView : View {
                 AddNoteView { journal in
                     context.insert(journal)
                     recentJournals.insert(journal, at: 0)
+                    do {
+                        try context.save()
+                    }
+                    catch {
+                        fatalError()
+                    }
                 }
             }
             .sheet(isPresented: $showEditJournalView) {
@@ -284,6 +305,12 @@ struct JournalListView : View {
             context.delete(journal)
             recentJournals.removeAll { j in
                 j.id == journal.id
+            }
+            do {
+                try context.save()
+            }
+            catch {
+                fatalError()
             }
         }
     }

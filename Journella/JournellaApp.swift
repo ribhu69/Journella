@@ -28,9 +28,15 @@ struct JournellaApp: App {
     var body: some Scene {
         WindowGroup {
             JournalListView()
-//            ContentView()
+                .modelContainer(for:  [
+                    Journal.self,
+                    Tags.self,
+                    Item.self
+                ], inMemory: false, isAutosaveEnabled: true, isUndoEnabled: false, onSetup: { res in
+                    //
+                })
         }
-        .modelContainer(DatabaseManager.shared.getContainer())
+        
         .environmentObject(AppDefaults.shared)
         
     }
