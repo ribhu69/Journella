@@ -5,7 +5,9 @@
 //  Created by Arkaprava Ghosh on 05/10/24.
 //
 import SwiftUI
-struct NotesDetailView: View {
+import NaturalLanguage
+
+struct JournalDetailView: View {
     @EnvironmentObject var appDefaults : AppDefaults
     @Environment(\.colorScheme) var colorScheme
     @State var note: Journal
@@ -90,7 +92,7 @@ struct NotesDetailView: View {
             )
             .sheet(isPresented: $isEditMode, content: {
                 
-                AddNoteView(journal: note) { newNote in
+                AddJournalView(journal: note) { newNote in
                     note = newNote
                     editedNoteCompletion?(newNote)
                 }

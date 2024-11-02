@@ -9,6 +9,7 @@ enum Fonts : Identifiable, Hashable, CaseIterable {
     var id: Fonts {
         return self
     }
+    case sanFrancisco
     case roboto
     case playFair
     case dancingScript
@@ -18,6 +19,8 @@ enum Fonts : Identifiable, Hashable, CaseIterable {
 extension Fonts {
     var displayName: String {
         switch self {
+        case .sanFrancisco:
+            return "San Francisco"
         case .roboto:
             return "Roboto"
         case .playFair:

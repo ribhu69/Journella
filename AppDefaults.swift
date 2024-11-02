@@ -13,7 +13,7 @@ class AppDefaults : ObservableObject {
     @Published var appFontString : String!
     static var shared = AppDefaults()
     private init() {
-        appFontString = userDefaults.value(forKey: APP_FONT) as? String ?? "Oswald"
+        appFontString = userDefaults.value(forKey: APP_FONT) as? String ?? "San Francisco"
     }
     
     func setAppFont(value: String) {
