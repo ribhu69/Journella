@@ -7,6 +7,11 @@
 import SwiftUI
 import SwiftData
 
+enum FocusField : Hashable {
+    case title
+    case description
+}
+
 struct AddJournalView: View {
     
     @EnvironmentObject var appDefaults : AppDefaults
@@ -15,16 +20,12 @@ struct AddJournalView: View {
     @Query var storedTags : [Tags]
     @State var filteredTags = [Tags]()
     @State private var startDate = Date()
-    @State var titlePlaceHolder = ""
-    @State var tagTitle = ""
-    @State var tagTitlePlaceHolder = "Add Tags (Optional)"
-    @State var nonEmptyTagsPlaceHolder = ""
     @State private var isDiscardAlertPresented: Bool = false
-    @State var tags = [Tags]()
+    @State var tags : [Tags] = []
+    @State var titlePlaceHolder = ""
     @State var noteDescription = ""
     @State var showAddTagView = false
-    @FocusState private var isTitleFocused: Bool
-     @FocusState private var isJournalFocused: Bool
+    @FocusState private var focusField: FocusField?
     @State private var isPopoverPresented = false
 
     
@@ -37,10 +38,12 @@ struct AddJournalView: View {
         self.onSave = onSave
         if let journal {
             self.journal = journal
-            self.title = journal.title
-            self.noteDescription = journal.desc
             if let tags = journal.tags, !tags.isEmpty {
-                self.tags = tags
+                _title = State(initialValue: journal.title)
+                _tags = State(initialValue: tags)
+                _noteDescription = State(initialValue: journal.desc)
+                
+                _startDate = State(initialValue: journal.createdDate)
             }
         }
     }
@@ -48,14 +51,12 @@ struct AddJournalView: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
-              
-                
                 /// Header Title area
                 ZStack(alignment:.leading) {
                     if self.title.isEmpty {
                         
                         TextField("Title", text: $titlePlaceHolder) {
-                            isJournalFocused = true
+                            focusField = .title
                         } .font(.custom(appDefaults.appFontString, size: 32))
                             .padding(.horizontal, 8)
                             .foregroundColor(.primary)
@@ -64,15 +65,20 @@ struct AddJournalView: View {
                     }
                     
                     TextField("Title", text: $title) {
-                        isJournalFocused = true
+                        focusField = .description
                     }.font(.custom(appDefaults.appFontString, size: 32))
                         .padding(.horizontal, 8)
-                        .focused($isTitleFocused)
+                        .focused($focusField, equals: .title)
+                        .onSubmit {
+                            focusField = .description
+                        }
+                    
                         .onAppear {
                             if journal != nil {
                                 title = journal!.title
+                                noteDescription = journal!.desc
                             }
-                            isTitleFocused = true
+                            focusField = .title
                             
                         }
                 }
@@ -80,38 +86,32 @@ struct AddJournalView: View {
                 ///Tags Area
                 HStack {
                     VStack(alignment: .leading) {
-                        Button(action: {
-                            showAddTagView.toggle()
-                        }, label: {
-                            Text(tagTitlePlaceHolder)
-                                .font(.body)
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 8)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .foregroundStyle(.blue.opacity(0.3))
-                                        
-                                }
-                        })
-                        .tint(.secondary)
-                        
                         if tags.count > 0 {
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(tags, id: \.self) { item in
-                                        ItemView(text: item.title, onDelete: {
-                                            removeItem(item)
-                                        })
+                            HStack {
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(tags, id: \.self) { item in
+                                            SelectedTagCell(tag: item) { tag in
+                                                removeItem(tag)
+                                            }
+                                        }
                                     }
                                 }
+                                .scrollIndicators(.hidden)
+                                Image("tag")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .foregroundStyle(.secondary)
+                                    .frame(width: 18, height: 18)
+                                    .padding(.trailing, 4)
+                                Text("\(tags.count)")
+                                    .font(.title3)
+                                    .foregroundStyle(.secondary)
                             }
-                            .padding(.horizontal, 8)
-                            .scrollIndicators(.hidden)
                         }
 
                         Text(getFormattedDate(date: startDate))
                             .disabled(true)
-                            .padding(.horizontal, 8)
                             .padding(.vertical, 8)
                             .foregroundStyle(.secondary)
 
@@ -128,13 +128,22 @@ struct AddJournalView: View {
                     .padding(.leading, 8)
                     Spacer()
                 }
+                
+                TextEditor(text: $noteDescription)
+                    .focused($focusField, equals: .description)
+                    .onSubmit {
+                        focusField = nil
+                    }
+                
+                
             }
             .padding(.horizontal)
-            .navigationTitle("Add Journal")
+            .navigationTitle(journal != nil ? "Edit Journal" : "Add Journal")
             .navigationBarTitleDisplayMode(.inline)
+            
             .navigationBarItems(
                 leading: Button(action: {
-                    if !title.isEmpty || !tagTitle.isEmpty {
+                    if !title.isEmpty || !tags.isEmpty {
                         isDiscardAlertPresented = true
                     } else {
                         self.discard()
@@ -142,14 +151,25 @@ struct AddJournalView: View {
                 }) {
                     Text("Discard")
                 },
-                trailing: Button(action: {
-                    // Perform save action
-                    self.save()
-                }) {
-                    Text("Save")
+                trailing: HStack {
+                    Button(action: {
+                        // Perform some other action for the second trailing item
+                        showAddTagView.toggle()
+                    }) {
+                        Image("tag", bundle: nil)
+                            .renderingMode(.template)// Example icon
+                    }
+
+                    Button(action: {
+                        // Perform save action
+                        self.save()
+                    }) {
+                        Text("Save")
+                    }
+                    .disabled(title.isEmpty)
                 }
-                .disabled(title.isEmpty)
             )
+
             .alert(isPresented: $isDiscardAlertPresented) {
                 Alert(
                     title: Text("Discard changes?"),
@@ -164,23 +184,13 @@ struct AddJournalView: View {
                 )
             }
             .sheet(isPresented: $showAddTagView) {
-                AddTagView { updatedTags in
+                AddTagView(existingTags: tags) { updatedTags in
                     tags = updatedTags
                 }
             }
         }
     }
     
-    private func filterTags() {
-        if tagTitle.isEmpty {
-            filteredTags.removeAll()
-            isPopoverPresented = false
-        }
-        else {
-            filteredTags = storedTags.filter { $0.title.localizedCaseInsensitiveContains(tagTitle)}
-            isPopoverPresented = !filteredTags.isEmpty
-        }
-    }
     private func removeItem(_ item: Tags) {
         
         if let index = tags.firstIndex(where: { tag in
@@ -188,9 +198,6 @@ struct AddJournalView: View {
         }) {
             tags.remove(at: index)
         }
-        
-        let tagsString = tags.count > 1 ? "tags" : "tag"
-        nonEmptyTagsPlaceHolder = "\(tags.count) \(tagsString) added. Add more (Optional)"
     }
     
     
@@ -199,50 +206,32 @@ struct AddJournalView: View {
     }
 
     private func save() {
-//        if !tagTitle.isEmpty {
-//            let tagSplitArray = tagTitle.split(separator: ",").map {String($0)}
-//            tagTitle = ""
-//            tags.append(contentsOf: tagSplitArray)
-//        }
-////        var newNote = Note(id: uid, title: title, detail: noteDescription)
-//        let newJournal = Journal(
-//            id: UUID().uuidString,
-//            title: title,
-//            description: noteDescription,
-//            createdDate: startDate
-//        )
-//        newJournal.tags = tags.map { Tags(title: $0, id: UUID().uuidString)}
-//        onSave!(newJournal)
-//        dismiss()
+        
+        let newTitle =  title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let newDescription = noteDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if let journal {
+            journal.tags = tags
+            journal.title = newTitle
+            journal.desc = newDescription
+            journal.createdDate = startDate
+            onSave!(journal)
+        }
+        else {
+            let newJournal = Journal(
+                id: UUID().uuidString,
+                title: newTitle,
+                description: newDescription,
+                createdDate: startDate
+            )
+            newJournal.tags = tags
+            onSave!(newJournal)
+        }
+        dismiss()
     }
     
 }
 
-struct ItemView: View {
-    let text: String
-    let onDelete: () -> Void
-    @EnvironmentObject var appDefault: AppDefaults
-    var body: some View {
-        HStack {
-            Text(text)
-                .font(.custom(appDefault.appFontString, size: 14, relativeTo: .body))
-                .padding(.leading, 8)
-                .padding(.vertical, 4)
-            
-            
-            Button(action: onDelete) {
-                Image(systemName: "multiply.circle.fill")
-                    .foregroundColor(Color(.systemRed))
-                    .imageScale(.small)
-                    .padding(.vertical, 4)
-                    .padding(.trailing, 8)
-            }
-        }
-        .background(RoundedRectangle(cornerRadius: 8)
-            .fill(text.uniqueColor().opacity(0.2)))
-        .padding(.trailing, 8)
-    }
-}
 
 #Preview {
     AddJournalView() { note in
