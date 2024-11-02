@@ -69,5 +69,5 @@ struct SettingsView : View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView().environmentObject(AppDefaults.shared)
 }
