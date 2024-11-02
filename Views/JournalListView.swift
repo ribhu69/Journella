@@ -13,25 +13,27 @@ struct JournalRow: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(journal.title)
-                .font(Font.custom(appDefaults.appFontString, size: 24))
+            HStack {
+                Text(journal.title)
+                    .lineLimit(1)
+                    .font(Font.custom(appDefaults.appFontString, size: 24))
+                Spacer()
+                Image("calender", bundle: nil)
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 14, height: 14)
+                    .foregroundStyle(.secondary)
+                    .padding(.trailing, 4)
+                Text(getFormattedDate(date: journal.createdDate))
+                    .font(Font.custom(appDefaults.appFontString, size: 14))
+                    .foregroundStyle(.secondary)
+            }
+           
                
             Text(journal.desc.isEmpty ? "No Description" : journal.desc)
                 .lineLimit(2)
                 .foregroundStyle(.secondary)
                 .font(Font.custom(appDefaults.appFontString, size: 18))
-            
-            HStack {
-                Image("calender", bundle: nil)
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 18, height: 18)
-                    .foregroundStyle(.secondary)
-                    .padding(.trailing, 8)
-                Text(getFormattedDate(date: journal.createdDate))
-                    .foregroundStyle(.secondary)
-            }
-            
             
             if let tags = journal.tags, !tags.isEmpty  {
                 HStack {
@@ -44,14 +46,7 @@ struct JournalRow: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(tags) { tag in
-                                Text(tag.title)
-                                    .font(Font.custom(appDefaults.appFontString, size: 14))
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .fill(tag.id.uniqueColor().opacity(0.2)) // The color applied as background
-                                    )
+                                TagView(tag: tag)
                             }
                         }
                     }
@@ -70,7 +65,7 @@ struct JournalCollectionView: View {
 
     var body: some View {
         NavigationLink(destination: {
-            NotesDetailView(note: journal)
+            JournalDetailView(note: journal)
         }, label: {
             VStack(alignment: .leading) {
                 Text(journal.title)
@@ -141,7 +136,7 @@ struct JournalListView : View {
                             ForEach(filteredJournals) { journal in
                                 
                                 NavigationLink {
-                                    NotesDetailView(note: journal) { editedJournal in
+                                    JournalDetailView(note: journal) { editedJournal in
                                         deleteJournal(journal: journal)
                                         context.insert(editedJournal)
                                         recentJournals.insert(editedJournal, at: 0)
@@ -204,7 +199,7 @@ struct JournalListView : View {
                             ForEach(journals) { journal in
                                 
                                 NavigationLink {
-                                    NotesDetailView(note: journal) { editedJournal in
+                                    JournalDetailView(note: journal) { editedJournal in
                                         deleteJournal(journal: journal)
                                         context.insert(editedJournal)
                                         recentJournals.insert(editedJournal, at: 0)
@@ -239,7 +234,7 @@ struct JournalListView : View {
                 
             }
             .sheet(isPresented: $showWriteJournalView) {
-                AddNoteView { journal in
+                AddJournalView { journal in
                     context.insert(journal)
                     recentJournals.insert(journal, at: 0)
                     do {
@@ -251,7 +246,7 @@ struct JournalListView : View {
                 }
             }
             .sheet(isPresented: $showEditJournalView) {
-                AddNoteView(journal: journalInEdit!) { updatedJournal in
+                AddJournalView(journal: journalInEdit!) { updatedJournal in
                     deleteJournal(journal: journalInEdit!)
                     context.insert(updatedJournal)
                     recentJournals.insert(updatedJournal, at: 0)
@@ -265,9 +260,8 @@ struct JournalListView : View {
                 recentJournals = journals
             }
             
-            .onChange(of: journalInEdit) {
-                newValue in
-                if newValue != nil {
+            .onChange(of: journalInEdit) { oldVal, newVal in
+                if newVal != nil {
                     showEditJournalView = true
                 }
             }
@@ -285,7 +279,6 @@ struct JournalListView : View {
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    if journals.count > 0 {
                         Button(action: {
                             showSettingsPage.toggle()
                         }) {
@@ -293,7 +286,6 @@ struct JournalListView : View {
                                 .renderingMode(.template)
                                 .tint(colorScheme == .dark ? .white : .black)
                         }
-                    }
 
                 }
             }
@@ -317,5 +309,5 @@ struct JournalListView : View {
 }
 
 #Preview {
-    JournalListView()
+    JournalListView().environmentObject(AppDefaults.shared)
 }

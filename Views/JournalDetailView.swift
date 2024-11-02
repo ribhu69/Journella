@@ -1,5 +1,5 @@
 //
-//  NoteDetailView.swift
+//  JournalDetailView.swift
 //  Journella
 //
 //  Created by Arkaprava Ghosh on 05/10/24.
@@ -10,30 +10,26 @@ import NaturalLanguage
 struct JournalDetailView: View {
     @EnvironmentObject var appDefaults : AppDefaults
     @Environment(\.colorScheme) var colorScheme
-    @State var note: Journal
-    var editedNoteCompletion : ((Journal) -> Void)?
+    @State var journal: Journal
+    var editJournalCompleted : ((Journal) -> Void)?
     @State private var isEditMode = false
     
     init(note: Journal, editedNoteCompletion: ((Journal) -> Void)? = nil, isEditMode: Bool = false) {
-        self.note = note
-        self.editedNoteCompletion = editedNoteCompletion
+        self.journal = note
+        self.editJournalCompleted = editedNoteCompletion
         self.isEditMode = isEditMode
     }
     
     var body: some View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
-                    Text(note.title)
+                    Text(journal.title)
                         .font(.custom(appDefaults.appFontString, size: 34, relativeTo: .body))
                         .fontWeight(.bold)
                     
-                    if let tags = note.tags, !tags.isEmpty {
+                    if let tags = journal.tags, !tags.isEmpty {
                         VStack {
-                            Text("Tags")
-                                .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
-                                .foregroundStyle(.secondary)
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                .padding(.top, 4)
+                            
                             ScrollView(.horizontal) {
                                 HStack {
                                     ForEach(tags, id: \.self) { item in
@@ -48,10 +44,9 @@ struct JournalDetailView: View {
                     }
                     else {
                         Text("No tags available.")
-                            .font(.custom(appDefaults.appFontString, size: 14, relativeTo: .body))
+                            .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                            .foregroundStyle(Color.gray)
-                            .padding(.horizontal, 16)
+                            .foregroundStyle(.secondary)
                             .padding(.vertical, 4)
                     }
                     
@@ -61,14 +56,15 @@ struct JournalDetailView: View {
                             .frame(width: 25, height: 25)
                             .foregroundStyle(.secondary)
                         
-                        Text(getFormattedDate(date: note.createdDate))
+                        Text(getFormattedDate(date: journal.createdDate))
                             .font(.custom(appDefaults.appFontString, size: 17, relativeTo: .body))
                         
                     }
                     
-                    Text(note.desc)
+                    Text(journal.desc.isEmpty ? "No description available." : journal.desc)
                         .font(.custom(appDefaults.appFontString, size: 21, relativeTo: .body))
                         .fontWeight(.semibold)
+                        .foregroundStyle(journal.desc.isEmpty ? .secondary : .primary)
                         .padding(.top, 8)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -92,9 +88,9 @@ struct JournalDetailView: View {
             )
             .sheet(isPresented: $isEditMode, content: {
                 
-                AddJournalView(journal: note) { newNote in
-                    note = newNote
-                    editedNoteCompletion?(newNote)
+                AddJournalView(journal: journal) { newNote in
+                    journal = newNote
+                    editJournalCompleted?(newNote)
                 }
             })
     }
@@ -105,13 +101,16 @@ struct TagView : View{
     var tag: Tags
     var body: some View {
         HStack {
-            Text(tag.title)
-                .font(.custom(appDefaults.appFontString, size: 14, relativeTo: .body))
-                .foregroundStyle(.primary)
-                .padding(.horizontal, 16)
+            Text("\(tag.title)")
+                .font(Font.custom(appDefaults.appFontString, size: 15))
+                .tint(.primary)
                 .padding(.vertical, 4)
-        }.background(RoundedRectangle(cornerRadius: 8)
-            .fill(tag.id.uniqueColor().opacity(0.2)))
-        
+                .padding(.horizontal, 8)
+                .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(tag.id.uniqueColor().opacity(0.3)))
+            
+            Spacer()
+        }
+        .padding(.vertical, 8)
+        .contentShape(Rectangle()) // Makes the entire HStack tappable
     }
 }
