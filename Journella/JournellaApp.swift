@@ -31,7 +31,9 @@ struct JournellaApp: App {
                 .modelContainer(for:  [
                     Journal.self,
                     Tags.self,
-                    Item.self
+                    Item.self,
+                    Attachment.self,
+                    
                 ], inMemory: false, isAutosaveEnabled: true, isUndoEnabled: false, onSetup: { res in
                     //
                 })
