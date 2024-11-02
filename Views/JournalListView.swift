@@ -106,6 +106,7 @@ struct BreatheAnimationView: View {
 }
 
 struct JournalListView : View {
+    @State private var showDeleteAlert = false
     @EnvironmentObject var appDefaults: AppDefaults
     @Environment(\.modelContext) private var context
     @Query var journals : [Journal]
@@ -114,6 +115,7 @@ struct JournalListView : View {
     @State var showWriteJournalView = false
     @State var showEditJournalView = false
     @State private var journalInEdit : Journal?
+    @State private var journalToDelete: Journal?
     @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
     var filteredJournals: [Journal] {
@@ -289,23 +291,46 @@ struct JournalListView : View {
 
                 }
             }
+            .alert(isPresented: $showDeleteAlert) {
+                       Alert(
+                           title: Text("Confirm Deletion"),
+                           message: Text("Are you sure you want to delete this journal? This action cannot be undone."),
+                           primaryButton: .destructive(Text("Delete")) {
+                               if let journal = journalToDelete {
+                                   performDelete(journal: journal)
+                               }
+                           },
+                           secondaryButton: .cancel() {
+                               journalToDelete = nil
+                           }
+                       )
+                   }
         }
     }
     
     func deleteJournal(journal: Journal) {
-        withAnimation {
-            context.delete(journal)
-            recentJournals.removeAll { j in
-                j.id == journal.id
-            }
-            do {
-                try context.save()
-            }
-            catch {
-                fatalError()
+            let isPromptEnabled = AppDefaults.shared.isDeletePromptEnabled()
+            
+            if isPromptEnabled {
+                journalToDelete = journal
+                showDeleteAlert = true    // Show the alert
+            } else {
+                performDelete(journal: journal) // Directly delete if prompt is disabled
             }
         }
-    }
+    
+    func performDelete(journal: Journal) {
+            withAnimation {
+                context.delete(journal)
+                recentJournals.removeAll { $0.id == journal.id }
+                journalToDelete = nil
+                do {
+                    try context.save()
+                } catch {
+                    fatalError("Failed to save context after deletion: \(error)")
+                }
+            }
+        }
 }
 
 #Preview {

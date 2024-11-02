@@ -21,6 +21,13 @@ class AppDefaults : ObservableObject {
         userDefaults.setValue(value, forKey: APP_FONT)
     }
     
+    func isDeletePromptEnabled() -> Bool {
+        userDefaults.value(forKey: "isDeletePromptEnabled") as? Bool ?? false
+    }
+    func setDeletePromptEnabled(value: Bool) {
+        userDefaults.setValue(value, forKey: "isDeletePromptEnabled")
+    }
+    
     func getAppVersion() -> String {
         let infoDictionary = Bundle.main.infoDictionary
         let version = infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
