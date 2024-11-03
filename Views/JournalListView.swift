@@ -237,6 +237,7 @@ struct JournalListView : View {
             }
             .sheet(isPresented: $showWriteJournalView) {
                 AddJournalView { journal in
+                    updateTags(for: journal)
                     context.insert(journal)
                     recentJournals.insert(journal, at: 0)
                     do {
@@ -250,6 +251,7 @@ struct JournalListView : View {
             .sheet(isPresented: $showEditJournalView) {
                 AddJournalView(journal: journalInEdit!) { updatedJournal in
                     deleteJournal(journal: journalInEdit!)
+                    updateTags(for: updatedJournal)
                     context.insert(updatedJournal)
                     recentJournals.insert(updatedJournal, at: 0)
                 }
@@ -308,6 +310,37 @@ struct JournalListView : View {
         }
     }
     
+    /*
+     Fetches the existing tags for the journal.
+     Deletes it if non empty, adds new ones.
+     
+     */
+    func updateTags(for journal: Journal) {
+        let journalId = journal.id
+        let predicate = #Predicate<TagMapping> { $0.mappedJournalId == journalId }
+        let fetchDescriptor = FetchDescriptor(predicate: predicate)
+        do {
+            let items = try context.fetch(fetchDescriptor)
+            if !items.isEmpty {
+                for item in items {
+                    context.delete(item)
+                }
+            }
+            if let tags = journal.tags {
+              
+                for tag in tags {
+                    let newTagMap = TagMapping(tagId: tag.id, mappedJournalId: journal.id)
+                    context.insert(newTagMap)
+                }
+            }
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
+
+    }
+    
     func deleteJournal(journal: Journal) {
             let isPromptEnabled = AppDefaults.shared.isDeletePromptEnabled()
             
@@ -320,18 +353,30 @@ struct JournalListView : View {
         }
     
     func performDelete(journal: Journal) {
-            withAnimation {
-                context.delete(journal)
-                recentJournals.removeAll { $0.id == journal.id }
-                journalToDelete = nil
-                do {
-                    try context.save()
-                } catch {
+        withAnimation {
+            context.delete(journal)
+            let journalId = journal.id
+            recentJournals.removeAll { $0.id == journalId }
+            journalToDelete = nil
+            
+            let predicate = #Predicate<TagMapping> { $0.mappedJournalId == journalId }
+            let fetchDescriptor = FetchDescriptor(predicate: predicate)
+            do {
+                let items = try context.fetch(fetchDescriptor)
+                if !items.isEmpty {
+                    for item in items {
+                        context.delete(item)
+                    }
+                }
+                try context.save()
+            }
+                
+                catch {
                     fatalError("Failed to save context after deletion: \(error)")
                 }
             }
         }
-}
+    }
 
 #Preview {
     JournalListView().environmentObject(AppDefaults.shared)
