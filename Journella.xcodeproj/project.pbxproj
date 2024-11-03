@@ -10,6 +10,11 @@
 		A2473AC92CC3E60700799565 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2473AC82CC3E5FD00799565 /* Attachment.swift */; };
 		A2473ACB2CC3E62100799565 /* AttachmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2473ACA2CC3E61E00799565 /* AttachmentType.swift */; };
 		A2473AD22CC4208C00799565 /* AddTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2473AD12CC4208600799565 /* AddTagView.swift */; };
+		A255566E2CD72EDF009ABFD4 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255566D2CD72EDB009ABFD4 /* TagListView.swift */; };
+		A25556712CD730B0009ABFD4 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556702CD730AC009ABFD4 /* TagCell.swift */; };
+		A25556732CD730F7009ABFD4 /* SelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556722CD730F4009ABFD4 /* SelectedCell.swift */; };
+		A25556752CD73142009ABFD4 /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556742CD7313F009ABFD4 /* TagListCell.swift */; };
+		A25556772CD773B4009ABFD4 /* TagMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556762CD773AD009ABFD4 /* TagMapping.swift */; };
 		A2C45BD32CB016EC0049C4CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* README.md */; };
 		A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BED2CB019C80049C4CD /* Oswald.ttf */; };
 		A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */; };
@@ -18,7 +23,6 @@
 		A2C45BF92CB01C580049C4CD /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BF82CB01B000049C4CD /* FontPickerView.swift */; };
 		A2C45BFC2CB0252C0049C4CD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BFB2CB024E70049C4CD /* ColorExtension.swift */; };
 		A2C45BFE2CB042570049C4CD /* JournalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45BFD2CB042540049C4CD /* JournalListView.swift */; };
-		A2C45C032CB043650049C4CD /* TagMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C022CB042EA0049C4CD /* TagMapper.swift */; };
 		A2C45C042CB043690049C4CD /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C002CB042A50049C4CD /* Journal.swift */; };
 		A2C45C052CB0436D0049C4CD /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45C012CB042D60049C4CD /* Tags.swift */; };
 		A2C45C072CB04D360049C4CD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2C45C062CB04D360049C4CD /* Media.xcassets */; };
@@ -53,6 +57,11 @@
 		A2473AC82CC3E5FD00799565 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
 		A2473ACA2CC3E61E00799565 /* AttachmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentType.swift; sourceTree = "<group>"; };
 		A2473AD12CC4208600799565 /* AddTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagView.swift; sourceTree = "<group>"; };
+		A255566D2CD72EDB009ABFD4 /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		A25556702CD730AC009ABFD4 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		A25556722CD730F4009ABFD4 /* SelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCell.swift; sourceTree = "<group>"; };
+		A25556742CD7313F009ABFD4 /* TagListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
+		A25556762CD773AD009ABFD4 /* TagMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMapping.swift; sourceTree = "<group>"; };
 		A2C45BA32CB016980049C4CD /* Journella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BB52CB0169A0049C4CD /* JournellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +75,6 @@
 		A2C45BFD2CB042540049C4CD /* JournalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListView.swift; sourceTree = "<group>"; };
 		A2C45C002CB042A50049C4CD /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		A2C45C012CB042D60049C4CD /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
-		A2C45C022CB042EA0049C4CD /* TagMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMapper.swift; sourceTree = "<group>"; };
 		A2C45C062CB04D360049C4CD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		A2C45C0E2CB136110049C4CD /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
 		A2C45C102CB160E60049C4CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -141,6 +149,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A255566F2CD72FBC009ABFD4 /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				A25556742CD7313F009ABFD4 /* TagListCell.swift */,
+				A25556722CD730F4009ABFD4 /* SelectedCell.swift */,
+				A25556702CD730AC009ABFD4 /* TagCell.swift */,
+			);
+			path = CellView;
+			sourceTree = "<group>";
+		};
 		A2C45B9A2CB016980049C4CD = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +203,8 @@
 		A2C45BF72CB01AF90049C4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A255566F2CD72FBC009ABFD4 /* CellView */,
+				A255566D2CD72EDB009ABFD4 /* TagListView.swift */,
 				A2473AD12CC4208600799565 /* AddTagView.swift */,
 				A2C45C402CB1BB100049C4CD /* SettingsView.swift */,
 				A2C45C122CB193B80049C4CD /* JournalDetailView.swift */,
@@ -208,9 +228,9 @@
 		A2C45BFF2CB042A20049C4CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A25556762CD773AD009ABFD4 /* TagMapping.swift */,
 				A2473ACA2CC3E61E00799565 /* AttachmentType.swift */,
 				A2473AC82CC3E5FD00799565 /* Attachment.swift */,
-				A2C45C022CB042EA0049C4CD /* TagMapper.swift */,
 				A2C45C012CB042D60049C4CD /* Tags.swift */,
 				A2C45C002CB042A50049C4CD /* Journal.swift */,
 			);
@@ -368,18 +388,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25556752CD73142009ABFD4 /* TagListCell.swift in Sources */,
+				A25556732CD730F7009ABFD4 /* SelectedCell.swift in Sources */,
 				A2473ACB2CC3E62100799565 /* AttachmentType.swift in Sources */,
+				A25556772CD773B4009ABFD4 /* TagMapping.swift in Sources */,
 				A2C45C412CB1BB190049C4CD /* SettingsView.swift in Sources */,
 				A2C45BF62CB01AB50049C4CD /* FontEnum.swift in Sources */,
 				A2C45C042CB043690049C4CD /* Journal.swift in Sources */,
 				A2C45BF92CB01C580049C4CD /* FontPickerView.swift in Sources */,
-				A2C45C032CB043650049C4CD /* TagMapper.swift in Sources */,
 				A2C45C432CB1CC120049C4CD /* AppDefaults.swift in Sources */,
 				A2473AC92CC3E60700799565 /* Attachment.swift in Sources */,
 				A2C45BFC2CB0252C0049C4CD /* ColorExtension.swift in Sources */,
 				A2C45C112CB160E70049C4CD /* DateExtension.swift in Sources */,
 				A2473AD22CC4208C00799565 /* AddTagView.swift in Sources */,
+				A25556712CD730B0009ABFD4 /* TagCell.swift in Sources */,
 				A2C45C0F2CB136130049C4CD /* AddJournalView.swift in Sources */,
+				A255566E2CD72EDF009ABFD4 /* TagListView.swift in Sources */,
 				A2C45C132CB193BD0049C4CD /* JournalDetailView.swift in Sources */,
 				A2C45C452CB22EDE0049C4CD /* FontExtension.swift in Sources */,
 				A2C45C052CB0436D0049C4CD /* Tags.swift in Sources */,

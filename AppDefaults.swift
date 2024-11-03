@@ -22,6 +22,7 @@ class AppDefaults : ObservableObject {
     }
     
     func isDeletePromptEnabled() -> Bool {
+        
         userDefaults.value(forKey: "isDeletePromptEnabled") as? Bool ?? false
     }
     func setDeletePromptEnabled(value: Bool) {

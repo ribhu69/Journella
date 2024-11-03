@@ -12,7 +12,6 @@ struct SettingsView : View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appDefaults : AppDefaults
     @State private var showDeletePrompt = false
-    var settingsOptions = ["Choose Font"]
     
     
     var body: some View {
@@ -47,6 +46,17 @@ struct SettingsView : View {
                         .foregroundStyle(.secondary)
                     
                 }
+                
+                NavigationLink(destination: TagListView()) {
+                    VStack(alignment: .leading) {
+                        Text("Manage Your Tags")
+                            .font(.custom(appDefaults.appFontString, size: 21))
+                        Text("Create or remove existing tags")
+                            .font(.custom(appDefaults.appFontString, size: 18))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                
                 NavigationLink(destination: FontPickerView()) {
                     VStack(alignment: .leading) {
                         Text("Font Picker")
