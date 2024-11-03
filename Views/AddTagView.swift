@@ -7,69 +7,13 @@
 import SwiftUI
 import SwiftData
 
-struct TagCell : View {
-    @EnvironmentObject var appDefaults: AppDefaults
-    var tag: Tags
-    var onSelect: (Tags) -> Void
-    
-    var body: some View {
-        HStack {
-            Text("\(tag.title)")
-                .font(Font.custom(appDefaults.appFontString, size: 15))
-                .tint(.primary)
-                .padding(.vertical, 4)
-                .padding(.horizontal, 8)
-                .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(tag.id.uniqueColor().opacity(0.3)))
-            
-            Spacer()
-        }
-        .padding(.vertical, 8)
-        .contentShape(Rectangle()) // Makes the entire HStack tappable
-        .onTapGesture {
-            onSelect(tag)
-        }
-    }
-}
-
-
-struct SelectedTagCell : View {
-    @EnvironmentObject var appDefaults: AppDefaults
-    var tag : Tags
-    var onCancel : (Tags)->Void
-    var body: some View {
-        HStack {
-            Text("\(tag.title)")
-                .font(Font.custom(appDefaults.appFontString, size: 15))
-            Button(action: {
-                onCancel(tag)
-            }, label: {
-                Image("cross", bundle: nil)
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 12, height: 12)
-                    .foregroundStyle(Color.red)
-            })
-            .tint(.primary)
-            .foregroundStyle(.secondary)
-        }
-        .padding(.vertical, 4)
-        .padding(.horizontal, 8)
-        .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(tag.id.uniqueColor().opacity(0.3)))
-    
-    }
-}
-
 struct AddTagView : View {
     
     var existingTags : [Tags]?
     var completion : ([Tags])->Void
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
-    @Query private var allTags : [Tags] {
-        didSet {
-            print("ZXCV Fetched items : \(allTags.count)")
-        }
-    }
+    @Query private var allTags : [Tags]
     @State var storedTags = [Tags]()
     @State var showAddTagView = false
     @State private var searchText = ""
@@ -251,10 +195,8 @@ struct AddTagView : View {
     
     func filterResults() {
         
-        print(#function)
         if !searchText.isEmpty {
             filteredResults = storedTags.filter { $0.title.contains(searchText)}
-            print("filter count :\(filteredResults.count)")
         } else {
             filteredResults.removeAll()
         }

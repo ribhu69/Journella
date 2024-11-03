@@ -29,6 +29,7 @@ struct JournellaApp: App {
         WindowGroup {
             JournalListView()
                 .modelContainer(for:  [
+                    TagMapping.self,
                     Journal.self,
                     Tags.self,
                     Item.self,
