@@ -34,6 +34,7 @@ struct JournellaApp: App {
                     Tags.self,
                     Item.self,
                     Attachment.self,
+                    AttachmentMapping.self
                     
                 ], inMemory: false, isAutosaveEnabled: true, isUndoEnabled: false, onSetup: { res in
                     //

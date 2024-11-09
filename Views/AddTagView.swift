@@ -122,7 +122,7 @@ struct AddTagView : View {
                     storedTags = allTags
                 }
             }
-            .navigationTitle("Tag")
+            .navigationTitle("Add Tags")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $searchText, prompt: "Search Tags")
             .toolbar {

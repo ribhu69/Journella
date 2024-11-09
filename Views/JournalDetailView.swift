@@ -5,9 +5,12 @@
 //  Created by Arkaprava Ghosh on 05/10/24.
 //
 import SwiftUI
-import NaturalLanguage
+import SwiftData
 
 struct JournalDetailView: View {
+    
+    @Environment(\.modelContext) var context
+    @State private var isFirstLoad = true
     @EnvironmentObject var appDefaults : AppDefaults
     @Environment(\.colorScheme) var colorScheme
     @State var journal: Journal
@@ -73,7 +76,12 @@ struct JournalDetailView: View {
                 
                
             }
-            
+            .onAppear {
+                if isFirstLoad {
+                    isFirstLoad = false
+                    fetchJournalAttachments()
+                }
+            }
             .navigationBarItems(
                 trailing: HStack {
                     Button(action: {
@@ -88,11 +96,33 @@ struct JournalDetailView: View {
             )
             .sheet(isPresented: $isEditMode, content: {
                 
-                AddJournalView(journal: journal) { newNote in
+                AddJournalView(journal: journal) { (newNote) in
                     journal = newNote
                     editJournalCompleted?(newNote)
                 }
             })
+    }
+    
+    private func fetchJournalAttachments() {
+        let journalId = journal.id
+        let predicate = #Predicate<AttachmentMapping>{ $0.journalId == journalId}
+        let attachmentMappingFD = FetchDescriptor(predicate : predicate)
+        
+        do {
+            let attachmentMapping = try context.fetch(attachmentMappingFD)
+            let attachmentIds = attachmentMapping.map {$0.attachmentId}
+            
+            
+            let attachmentPredicate = #Predicate<Attachment>{ attachmentIds.contains($0.attachmentId) }
+            let attachmentgFD = FetchDescriptor(predicate : attachmentPredicate)
+            
+            let attachments = try context.fetch(attachmentgFD)
+            journal.attachments = attachments
+            
+        }
+        catch {
+            print(error)
+        }
     }
 }
 

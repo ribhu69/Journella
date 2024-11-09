@@ -13,6 +13,7 @@ class Journal : Identifiable {
     var title : String
     var desc : String
     var tags : [Tags]?
+    var attachments : [Attachment]?
     var createdDate : Date
     
     init(id: String, title: String, description: String, tags: [Tags]? = nil, createdDate: Date) {

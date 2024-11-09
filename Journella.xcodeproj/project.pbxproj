@@ -15,6 +15,9 @@
 		A25556732CD730F7009ABFD4 /* SelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556722CD730F4009ABFD4 /* SelectedCell.swift */; };
 		A25556752CD73142009ABFD4 /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556742CD7313F009ABFD4 /* TagListCell.swift */; };
 		A25556772CD773B4009ABFD4 /* TagMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556762CD773AD009ABFD4 /* TagMapping.swift */; };
+		A255568C2CD7B30E009ABFD4 /* AttachmentMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255568B2CD7B30E009ABFD4 /* AttachmentMapping.swift */; };
+		A25556902CD7B962009ABFD4 /* JournalBottomPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255568F2CD7B95D009ABFD4 /* JournalBottomPanel.swift */; };
+		A25556922CD7BA40009ABFD4 /* AddAttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25556912CD7BA3A009ABFD4 /* AddAttachmentView.swift */; };
 		A2C45BD32CB016EC0049C4CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BD22CB016E70049C4CD /* README.md */; };
 		A2C45BEE2CB019C80049C4CD /* Oswald.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BED2CB019C80049C4CD /* Oswald.ttf */; };
 		A2C45BF02CB019D40049C4CD /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C45BEF2CB019D40049C4CD /* PlayfairDisplay.ttf */; };
@@ -62,6 +65,9 @@
 		A25556722CD730F4009ABFD4 /* SelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCell.swift; sourceTree = "<group>"; };
 		A25556742CD7313F009ABFD4 /* TagListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
 		A25556762CD773AD009ABFD4 /* TagMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMapping.swift; sourceTree = "<group>"; };
+		A255568B2CD7B30E009ABFD4 /* AttachmentMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentMapping.swift; sourceTree = "<group>"; };
+		A255568F2CD7B95D009ABFD4 /* JournalBottomPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBottomPanel.swift; sourceTree = "<group>"; };
+		A25556912CD7BA3A009ABFD4 /* AddAttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttachmentView.swift; sourceTree = "<group>"; };
 		A2C45BA32CB016980049C4CD /* Journella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BB52CB0169A0049C4CD /* JournellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45BBF2CB0169A0049C4CD /* JournellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +165,23 @@
 			path = CellView;
 			sourceTree = "<group>";
 		};
+		A255568D2CD7B335009ABFD4 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				A25556762CD773AD009ABFD4 /* TagMapping.swift */,
+				A255568B2CD7B30E009ABFD4 /* AttachmentMapping.swift */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		A255568E2CD7B347009ABFD4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A2473ACA2CC3E61E00799565 /* AttachmentType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		A2C45B9A2CB016980049C4CD = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +226,8 @@
 		A2C45BF72CB01AF90049C4CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A25556912CD7BA3A009ABFD4 /* AddAttachmentView.swift */,
+				A255568F2CD7B95D009ABFD4 /* JournalBottomPanel.swift */,
 				A255566F2CD72FBC009ABFD4 /* CellView */,
 				A255566D2CD72EDB009ABFD4 /* TagListView.swift */,
 				A2473AD12CC4208600799565 /* AddTagView.swift */,
@@ -228,8 +253,8 @@
 		A2C45BFF2CB042A20049C4CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A25556762CD773AD009ABFD4 /* TagMapping.swift */,
-				A2473ACA2CC3E61E00799565 /* AttachmentType.swift */,
+				A255568E2CD7B347009ABFD4 /* Enums */,
+				A255568D2CD7B335009ABFD4 /* Mapping */,
 				A2473AC82CC3E5FD00799565 /* Attachment.swift */,
 				A2C45C012CB042D60049C4CD /* Tags.swift */,
 				A2C45C002CB042A50049C4CD /* Journal.swift */,
@@ -389,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A25556752CD73142009ABFD4 /* TagListCell.swift in Sources */,
+				A25556902CD7B962009ABFD4 /* JournalBottomPanel.swift in Sources */,
 				A25556732CD730F7009ABFD4 /* SelectedCell.swift in Sources */,
 				A2473ACB2CC3E62100799565 /* AttachmentType.swift in Sources */,
 				A25556772CD773B4009ABFD4 /* TagMapping.swift in Sources */,
@@ -403,6 +429,8 @@
 				A2473AD22CC4208C00799565 /* AddTagView.swift in Sources */,
 				A25556712CD730B0009ABFD4 /* TagCell.swift in Sources */,
 				A2C45C0F2CB136130049C4CD /* AddJournalView.swift in Sources */,
+				A25556922CD7BA40009ABFD4 /* AddAttachmentView.swift in Sources */,
+				A255568C2CD7B30E009ABFD4 /* AttachmentMapping.swift in Sources */,
 				A255566E2CD72EDF009ABFD4 /* TagListView.swift in Sources */,
 				A2C45C132CB193BD0049C4CD /* JournalDetailView.swift in Sources */,
 				A2C45C452CB22EDE0049C4CD /* FontExtension.swift in Sources */,
@@ -572,11 +600,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Journella/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Journella requires access to photos and videos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,11 +631,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Journella/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Journella requires access to photos and videos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
