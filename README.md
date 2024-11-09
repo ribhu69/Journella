@@ -10,6 +10,8 @@ Journella is a beautifully designed journaling app with a primary focus on aesth
 - **Recent Journal cards**: Display your entries in a visually appealing card, ensuring a smooth user experience.
 - **SwiftUI-powered Interface**: The app is built using SwiftUI, leveraging its declarative syntax to deliver a clean and responsive UI.
 - **Data Management**: Swift Data is used to handle efficient storage and retrieval of journal entries.
+- **Tags Support** : Easily categorize and tag entries for quick reference, keeping important details organized and never forgotten
+- **Attachments**: Bring your journals to life with photos and files, ensuring every moment is preserved with its full meaning and context.
 
 ## Tech Stack
 
